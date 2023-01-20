@@ -1,0 +1,15 @@
+.header {
+   direction: rtl;
+   display: flex;
+   gap: 5rem;
+   margin-top: 3rem;
+}
+
+.header .active {
+   border-bottom: 2px solid #8c2687;
+}
+
+.header-item {
+   text-decoration: none;
+   color: black;
+}

@@ -1,0 +1,39 @@
+.banner {
+   background: linear-gradient(90deg, rgba(215, 31, 122, 1) 0%, rgba(110, 40, 140, 1) 100%);
+   direction: rtl;
+   display: flex;
+   padding: 5rem;
+   border-radius: 10rem;
+   margin-top: 10rem;
+}
+
+.banner-text {
+   color: white;
+   font-size: 2rem;
+   line-height: 4.5rem;
+}
+
+.banner-btn {
+   display: block;
+   width: fit-content;
+   text-decoration: none;
+   color: black;
+   background-color: white;
+   padding: 1rem 5rem;
+   border-radius: 0.7rem;
+   margin-top: 2rem;
+   margin-right: 4rem;
+}
+
+.banner-image {
+   width: 100%;
+}
+
+.home-bests-wrapper {
+}
+
+.home-bests-title {
+   direction: rtl;
+   margin-top: 10rem;
+   font-size: 3rem;
+}
