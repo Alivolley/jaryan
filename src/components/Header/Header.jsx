@@ -8,7 +8,7 @@ const Header = () => {
          <NavLink className="header-item" to={"/"}>
             خانه
          </NavLink>
-         <NavLink className="header-item" to={"/"}>
+         <NavLink className="header-item" to="/influencers">
             لیست اینفلوئنسر ها
          </NavLink>
          <NavLink className="header-item" to={"/"}>
