@@ -1,0 +1,30 @@
+.contactDashboard {
+   display: flex;
+   flex-direction: column;
+   align-items: flex-start;
+   gap: 3rem;
+}
+
+.ontactDashboard-lable {
+}
+
+.contactDashboard-textArea {
+   resize: vertical;
+   height: 22rem;
+   width: 80%;
+   font-size: 1.8rem;
+   padding: 1rem;
+}
+
+.contactDashboard-btn {
+   padding: 0.5rem 3rem;
+   border-radius: 1rem;
+   background-color: #74fdd6;
+   color: black;
+   border: none;
+   font-size: 1.8rem;
+   font-weight: 700;
+   cursor: pointer;
+   margin-top: 2rem;
+   border: 0.1rem solid rgba(110, 40, 140, 1);
+}

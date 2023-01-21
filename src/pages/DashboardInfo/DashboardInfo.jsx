@@ -7,7 +7,7 @@ const DashboardInfo = () => {
    return (
       <div className="dashboardInfo">
          <Grid container columnSpacing={5}>
-            <Grid item sm={4}>
+            <Grid item sm={3}>
                <div className="dashboardInfo-right">
                   <NavLink to="myAds" className="dashboardInfo-right__link">
                      تبلیغ های من
@@ -17,7 +17,7 @@ const DashboardInfo = () => {
                   </NavLink>
                </div>
             </Grid>
-            <Grid item sm={8}>
+            <Grid item sm={9}>
                <div className="dashboardInfo-left">
                   <Outlet />
                </div>
