@@ -6,7 +6,7 @@ const Header = () => {
    return (
       <div className="header">
          <NavLink className="header-item" to={"/"}>
-            خانه
+            صفحه اصلی
          </NavLink>
          <NavLink className="header-item" to="/influencers">
             لیست اینفلوئنسر ها
@@ -17,7 +17,7 @@ const Header = () => {
          <NavLink className="header-item" to={"/"}>
             ورود
          </NavLink>
-         <NavLink className="header-item" to={"/"}>
+         <NavLink className="header-item" to={"/choseRegister"}>
             ثبت نام
          </NavLink>
       </div>

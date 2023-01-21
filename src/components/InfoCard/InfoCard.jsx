@@ -1,4 +1,4 @@
-import { Grid, IconButton } from "@mui/material";
+import { Grid } from "@mui/material";
 import React from "react";
 import CardItem from "../CardItem/CardItem";
 import "./InfoCard.css";
@@ -21,9 +21,7 @@ const InfoCard = ({ name, id, image, category, location, followers, price, inter
                <CardItem lable="شروع قیمت" answer={price} />
                <CardItem lable="نرخ تعامل" answer={interaction} />
             </div>
-            <IconButton sx={{ width: "100%" }}>
-               <button className="card-btn">سفارش</button>
-            </IconButton>
+            <button className="card-btn">سفارش</button>
          </div>
       </Grid>
    );

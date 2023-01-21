@@ -1,0 +1,18 @@
+.choseRegister-link {
+   text-decoration: none;
+   color: white;
+   font-size: 2.5rem;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 20rem;
+   border-radius: 1rem;
+}
+
+.choseRegister-link__first {
+   background: linear-gradient(90deg, rgba(110, 40, 140, 1) 0%, rgba(215, 31, 122, 1) 100%);
+}
+
+.choseRegister-link__second {
+   background: linear-gradient(90deg, rgba(215, 31, 122, 1) 0%, rgba(110, 40, 140, 1) 100%);
+}
