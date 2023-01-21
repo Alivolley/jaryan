@@ -7,7 +7,7 @@ const Payment = () => {
 
    const formHandler = (e) => {
       e.preventDefault();
-      navigate("/");
+      navigate("/done");
    };
 
    return (

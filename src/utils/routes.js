@@ -1,5 +1,6 @@
 import ChoseRegister from "../pages/ChoseRegister/ChoseRegister";
 import ContactUs from "../pages/ContactUs/ContactUs";
+import DonePayment from "../pages/DonePayment/DonePayment";
 import Home from "../pages/Home/Home";
 import Influencer from "../pages/Influencer/Influencer";
 import Login from "../pages/Login/Login";
@@ -16,6 +17,7 @@ const routes = [
    { path: "/login", element: <Login /> },
    { path: "/contactUs", element: <ContactUs /> },
    { path: "/payment", element: <Payment /> },
+   { path: "/done", element: <DonePayment /> },
 ];
 
 export default routes;
