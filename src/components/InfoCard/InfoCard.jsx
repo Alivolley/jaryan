@@ -1,5 +1,6 @@
 import { Grid } from "@mui/material";
 import React from "react";
+import { Link } from "react-router-dom";
 import CardItem from "../CardItem/CardItem";
 import "./InfoCard.css";
 
@@ -21,7 +22,9 @@ const InfoCard = ({ name, id, image, category, location, followers, price, inter
                <CardItem lable="شروع قیمت" answer={price} />
                <CardItem lable="نرخ تعامل" answer={interaction} />
             </div>
-            <button className="card-btn">سفارش</button>
+            <Link to="/payment" className="card-btn">
+               سفارش
+            </Link>
          </div>
       </Grid>
    );

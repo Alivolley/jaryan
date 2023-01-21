@@ -3,6 +3,7 @@ import ContactUs from "../pages/ContactUs/ContactUs";
 import Home from "../pages/Home/Home";
 import Influencer from "../pages/Influencer/Influencer";
 import Login from "../pages/Login/Login";
+import Payment from "../pages/Payment/Payment";
 import RegisterCompany from "../pages/RegisterCompany/RegisterCompany";
 import RegisterInfo from "../pages/RegisterInfo/RegisterInfo";
 
@@ -14,6 +15,7 @@ const routes = [
    { path: "/registerCompany", element: <RegisterCompany /> },
    { path: "/login", element: <Login /> },
    { path: "/contactUs", element: <ContactUs /> },
+   { path: "/payment", element: <Payment /> },
 ];
 
 export default routes;

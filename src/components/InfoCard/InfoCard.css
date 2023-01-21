@@ -35,6 +35,9 @@
 }
 
 .card-btn {
+   display: block;
+   text-align: center;
+   text-decoration: none;
    width: 100%;
    font-weight: 700;
    color: white;
