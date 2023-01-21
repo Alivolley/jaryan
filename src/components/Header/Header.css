@@ -7,6 +7,7 @@
 
 .header .active {
    border-bottom: 2px solid #8c2687;
+   border-bottom-right-radius: 0.5rem;
 }
 
 .header-item {
