@@ -9,6 +9,7 @@ const RegisterCompany = () => {
    const formHandler = (e) => {
       e.preventDefault();
    };
+
    return (
       <div className="register">
          <h3 className="register-title">ثبت نام به عنوان شرکت</h3>
