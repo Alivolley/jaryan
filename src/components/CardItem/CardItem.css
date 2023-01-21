@@ -1,0 +1,16 @@
+.cardItem {
+   direction: rtl;
+   display: flex;
+   justify-content: space-between;
+   background-color: rgb(214, 210, 210);
+   padding: 0.5rem 1.5rem;
+   border-radius: 0.7rem;
+}
+
+.cardItem-lable {
+   font-weight: 700;
+}
+
+.cardItem-answer {
+   font-size: 1.4rem;
+}

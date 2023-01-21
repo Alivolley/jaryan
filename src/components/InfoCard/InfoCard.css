@@ -1,0 +1,46 @@
+.card {
+   box-shadow: 0px 0px 10px 5px rgb(141, 137, 137);
+   border-radius: 1rem;
+   padding: 1.5rem;
+}
+
+.card-header {
+   direction: rtl;
+   display: flex;
+   gap: 2rem;
+   align-items: center;
+}
+
+.card-header__titles {
+}
+
+.card-header__name {
+}
+
+.card-header__id {
+}
+
+.card-header__image {
+   width: 7rem;
+   height: 7rem;
+   border: 1px solid rgb(78, 76, 76);
+   border-radius: 50%;
+}
+
+.card-body {
+   display: flex;
+   flex-direction: column;
+   gap: 1.5rem;
+   margin: 3rem 0;
+}
+
+.card-btn {
+   width: 100%;
+   font-weight: 700;
+   color: white;
+   border: none;
+   background-color: #5f2eea;
+   padding: 0.7rem 0;
+   border-radius: 1rem;
+   cursor: pointer;
+}
