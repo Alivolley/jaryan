@@ -1,0 +1,32 @@
+.dashboardInfo {
+   margin-top: 7rem;
+   direction: rtl;
+   background-color: rgba(128, 128, 128, 0.1);
+   padding: 2rem;
+   border-radius: 0.7rem;
+   border: 0.1rem solid rgba(110, 40, 140, 1);
+}
+
+.dashboardInfo-left {
+}
+
+.dashboardInfo-right {
+   display: flex;
+   flex-direction: column;
+   gap: 0.5rem;
+   transition: all 0.2s;
+}
+
+.dashboardInfo-right__link {
+   text-decoration: none;
+   color: white;
+   background: linear-gradient(90deg, rgba(215, 31, 122, 1) 0%, rgba(110, 40, 140, 1) 100%);
+   padding: 2rem;
+   border-radius: 0.7rem;
+   width: fit-content;
+}
+
+.dashboardInfo-right .active {
+   width: auto;
+   transition: all 0.2s;
+}

@@ -1,0 +1,27 @@
+.myAds-card {
+   box-shadow: 0px 0px 10px 5px rgba(110, 40, 140, 1);
+   padding: 2rem;
+   border-radius: 1rem;
+   margin-top: 2rem;
+}
+
+.myAds-card:first-child {
+   margin-top: 0;
+}
+
+.myAds-card__item {
+   display: flex;
+   gap: 3rem;
+   margin-top: 2rem;
+}
+
+.myAds-card__item:first-child {
+   margin-top: 0;
+}
+
+.myAds-card__lable {
+   font-weight: 700;
+}
+
+.myAds-card__answer {
+}

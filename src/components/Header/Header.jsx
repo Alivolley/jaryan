@@ -20,6 +20,9 @@ const Header = () => {
          <NavLink className="header-item" to={"/choseRegister"}>
             ثبت نام
          </NavLink>
+         <NavLink className="header-item" to={"/dashboard/myAds"}>
+            داشبورد
+         </NavLink>
       </div>
    );
 };

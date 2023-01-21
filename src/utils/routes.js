@@ -1,5 +1,9 @@
+import ContactDashboard from "../components/ContactDashboard/ContactDashboard";
+import MyAds from "../components/MyAds/MyAds";
 import ChoseRegister from "../pages/ChoseRegister/ChoseRegister";
 import ContactUs from "../pages/ContactUs/ContactUs";
+import DashboardCompony from "../pages/DashboardCompony/DashboardCompony";
+import DashboardInfo from "../pages/DashboardInfo/DashboardInfo";
 import DonePayment from "../pages/DonePayment/DonePayment";
 import Home from "../pages/Home/Home";
 import Influencer from "../pages/Influencer/Influencer";
@@ -18,6 +22,15 @@ const routes = [
    { path: "/contactUs", element: <ContactUs /> },
    { path: "/payment", element: <Payment /> },
    { path: "/done", element: <DonePayment /> },
+   {
+      path: "/dashboard",
+      element: <DashboardInfo />,
+      children: [
+         { path: "myAds", element: <MyAds /> },
+         { path: "contact", element: <ContactDashboard /> },
+      ],
+   },
+   { path: "/dashboardCompany", element: <DashboardCompony /> },
 ];
 
 export default routes;
