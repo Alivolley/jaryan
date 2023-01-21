@@ -11,10 +11,10 @@ const Header = () => {
          <NavLink className="header-item" to="/influencers">
             لیست اینفلوئنسر ها
          </NavLink>
-         <NavLink className="header-item" to={"/"}>
+         <NavLink className="header-item" to={"/contactUs"}>
             تماس با ما
          </NavLink>
-         <NavLink className="header-item" to={"/"}>
+         <NavLink className="header-item" to={"/login"}>
             ورود
          </NavLink>
          <NavLink className="header-item" to={"/choseRegister"}>
