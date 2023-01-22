@@ -1,13 +1,58 @@
-import React, { useState } from "react";
+import Cookies from "js-cookie";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import DialogComponent from "../../components/DialogComponent/DialogComponent";
+import axiosInstance from "../../libs/axios";
 import "./RegisterCompany.css";
 
 const RegisterCompany = () => {
    const [userName, setUserName] = useState("");
    const [number, setNumber] = useState("");
    const [password, setPassword] = useState("");
+   const [showDialog, setShowDialog] = useState(false);
+   const [dialogText, setDialogText] = useState("");
+
+   let navigate = useNavigate();
+
+   useEffect(() => {
+      Cookies.get("access") && navigate("/");
+   }, []);
 
    const formHandler = (e) => {
       e.preventDefault();
+
+      if (userName && number && password) {
+         let newInflu = {
+            fullname: userName,
+            phone_number: number,
+            password: password,
+         };
+
+         axiosInstance
+            .post("accounts/register/company/", JSON.stringify(newInflu))
+            .then((res) => {
+               if (res.status === 201) {
+                  setDialogText("ثبت نام با موفقیت انجام شد");
+                  setShowDialog(true);
+                  Cookies.set("refresh", res.data.token.refresh, { expires: 1 });
+                  Cookies.set("access", res.data.token.access_token, { expires: 1 });
+               }
+            })
+            .catch((err) => {
+               setDialogText(err.message);
+               setShowDialog(true);
+               console.log(err);
+            });
+      }
+   };
+
+   const closeDialog = () => {
+      setUserName("");
+      setNumber("");
+      setPassword("");
+      setDialogText("");
+      setShowDialog(false);
+      navigate(0);
    };
 
    return (
@@ -28,6 +73,10 @@ const RegisterCompany = () => {
             </div>
             <button className="register-btn">ثبت نام</button>
          </form>
+
+         <DialogComponent open={showDialog} handleClose={closeDialog}>
+            {dialogText}
+         </DialogComponent>
       </div>
    );
 };

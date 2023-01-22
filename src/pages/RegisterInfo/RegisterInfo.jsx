@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./RegisterInfo.css";
 import axiosInstance from "../../libs/axios";
 import DialogComponent from "../../components/DialogComponent/DialogComponent";
+import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
 
 const RegisterInfo = () => {
    const [userName, setUserName] = useState("");
@@ -11,6 +13,12 @@ const RegisterInfo = () => {
    const [followers, setFollowers] = useState("");
    const [showDialog, setShowDialog] = useState(false);
    const [dialogText, setDialogText] = useState("");
+
+   let navigate = useNavigate();
+
+   useEffect(() => {
+      Cookies.get("access") && navigate("/");
+   }, []);
 
    const formHandler = (e) => {
       e.preventDefault();
@@ -30,6 +38,8 @@ const RegisterInfo = () => {
                if (res.status === 201) {
                   setDialogText("ثبت نام با موفقیت انجام شد");
                   setShowDialog(true);
+                  Cookies.set("refresh", res.data.token.refresh, { expires: 1 });
+                  Cookies.set("access", res.data.token.access_token, { expires: 1 });
                }
             })
             .catch((err) => {
@@ -48,6 +58,7 @@ const RegisterInfo = () => {
       setFollowers("");
       setDialogText("");
       setShowDialog(false);
+      navigate(0);
    };
 
    return (

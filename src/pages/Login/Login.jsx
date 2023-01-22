@@ -1,5 +1,5 @@
 import Cookies from "js-cookie";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import DialogComponent from "../../components/DialogComponent/DialogComponent";
 import axiosInstance from "../../libs/axios";
@@ -10,7 +10,12 @@ const Login = () => {
    const [password, setPassword] = useState("");
    const [showDialog, setShowDialog] = useState(false);
    const [dialogText, setDialogText] = useState("");
+
    let navigate = useNavigate();
+
+   useEffect(() => {
+      Cookies.get("access") && navigate("/");
+   }, []);
 
    const formHandler = (e) => {
       e.preventDefault();
@@ -44,7 +49,7 @@ const Login = () => {
       setPassword("");
       setDialogText("");
       setShowDialog(false);
-      navigate("/");
+      navigate(0);
    };
 
    return (
