@@ -13,7 +13,6 @@ const Influencer = () => {
    useEffect(() => {
       axiosInstance("influ/")
          .then((res) => {
-            console.log(res.data);
             setIsLoading(false);
             setBestMonth(res.data);
          })

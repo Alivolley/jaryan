@@ -1,12 +1,50 @@
+import Cookies from "js-cookie";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import DialogComponent from "../../components/DialogComponent/DialogComponent";
+import axiosInstance from "../../libs/axios";
 import "./Login.css";
 
 const Login = () => {
    const [userName, setUserName] = useState("");
    const [password, setPassword] = useState("");
+   const [showDialog, setShowDialog] = useState(false);
+   const [dialogText, setDialogText] = useState("");
+   let navigate = useNavigate();
 
    const formHandler = (e) => {
       e.preventDefault();
+
+      if (userName && password) {
+         let user = {
+            fullname: userName,
+            password: password,
+         };
+
+         axiosInstance
+            .post("accounts/login/", JSON.stringify(user))
+            .then((res) => {
+               if (res.status === 201) {
+                  setDialogText("ثبت نام با موفقیت انجام شد");
+                  setShowDialog(true);
+                  Cookies.set("refresh", res.data.token.refresh, { expires: 1 });
+                  Cookies.set("access", res.data.token.access_token, { expires: 1 });
+               }
+            })
+            .catch((err) => {
+               setDialogText(err.message);
+               setShowDialog(true);
+               console.log(err);
+            });
+      }
+   };
+
+   const closeDialog = () => {
+      setUserName("");
+      setPassword("");
+      setDialogText("");
+      setShowDialog(false);
+      navigate("/");
    };
 
    return (
@@ -24,6 +62,10 @@ const Login = () => {
             </div>
             <button className="register-btn">ورود</button>
          </form>
+
+         <DialogComponent open={showDialog} handleClose={closeDialog}>
+            {dialogText}
+         </DialogComponent>
       </div>
    );
 };
