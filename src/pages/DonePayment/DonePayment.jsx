@@ -6,7 +6,7 @@ const DonePayment = () => {
    return (
       <div className="donePayment">
          <h2 className="donePayment-title">پرداخت با موفقیت انجام شد .</h2>
-         <Link to="/" className="donePayment-btn">
+         <Link to="/dashboard/myAds" className="donePayment-btn">
             برو به سفارشات من
          </Link>
       </div>
