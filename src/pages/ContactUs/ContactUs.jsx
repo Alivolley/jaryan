@@ -1,14 +1,50 @@
 import React, { useState } from "react";
+import DialogComponent from "../../components/DialogComponent/DialogComponent";
+import axiosInstance from "../../libs/axios";
 import "./ContactUs.css";
 
 const ContactUs = () => {
    const [userName, setUserName] = useState("");
    const [number, setNumber] = useState("");
-   const [password, setPassword] = useState("");
+   const [subject, setSubject] = useState("");
    const [text, setText] = useState("");
+   const [showDialog, setShowDialog] = useState(false);
+   const [dialogText, setDialogText] = useState("");
 
    const formHandler = (e) => {
       e.preventDefault();
+
+      if (userName && number && subject && text) {
+         let newContect = {
+            name: userName,
+            phone_number: number,
+            subject: subject,
+            message: text,
+         };
+
+         axiosInstance
+            .post("contact/create/", JSON.stringify(newContect))
+            .then((res) => {
+               if (res.status === 201) {
+                  setDialogText("پیغام شما با موفقیت ارسال شد");
+                  setShowDialog(true);
+               }
+            })
+            .catch((err) => {
+               setDialogText(err.message);
+               setShowDialog(true);
+               console.log(err);
+            });
+      }
+   };
+
+   const closeDialog = () => {
+      setUserName("");
+      setNumber("");
+      setSubject("");
+      setText("");
+      setDialogText("");
+      setShowDialog(false);
    };
 
    return (
@@ -25,7 +61,7 @@ const ContactUs = () => {
             </div>
             <div className="register-input__wrapper">
                <label className="register-input__lable">موضوع :</label>
-               <input type="text" className="register-input" value={password} onChange={(e) => setPassword(e.target.value)} />
+               <input type="text" className="register-input" value={subject} onChange={(e) => setSubject(e.target.value)} />
             </div>
             <div className="register-input__wrapper">
                <label className="register-input__lable">متن :</label>
@@ -33,6 +69,10 @@ const ContactUs = () => {
             </div>
             <button className="register-btn">ارسال اطلاعات</button>
          </form>
+
+         <DialogComponent open={showDialog} handleClose={closeDialog}>
+            {dialogText}
+         </DialogComponent>
       </div>
    );
 };

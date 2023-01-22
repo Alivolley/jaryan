@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import CardItem from "../CardItem/CardItem";
 import "./InfoCard.css";
 
-const InfoCard = ({ name, id, image, category, location, followers, price, interaction }) => {
+const InfoCard = ({ name, pageId, image, category, location, followers, price, interaction, paymentId }) => {
    return (
       <Grid item md={4}>
          <div className="card">
@@ -12,7 +12,7 @@ const InfoCard = ({ name, id, image, category, location, followers, price, inter
                <img src={image} className="card-header__image" alt="" />
                <div className="card-header__titles">
                   <h3 className="card-header__name">{name}</h3>
-                  <p className="card-header__id">{id}</p>
+                  <p className="card-header__id">{pageId}</p>
                </div>
             </div>
             <div className="card-body">
@@ -22,7 +22,7 @@ const InfoCard = ({ name, id, image, category, location, followers, price, inter
                <CardItem lable="شروع قیمت" answer={price} />
                <CardItem lable="نرخ تعامل" answer={interaction} />
             </div>
-            <Link to="/payment" className="card-btn">
+            <Link to={`/payment/${paymentId}`} className="card-btn">
                سفارش
             </Link>
          </div>

@@ -15,7 +15,6 @@ const Home = () => {
    useEffect(() => {
       axiosInstance("influ/")
          .then((res) => {
-            console.log(res);
             setIsLoading(false);
             setBestMonth(res.data);
          })
@@ -52,13 +51,14 @@ const Home = () => {
                         <InfoCard
                            key={best.id}
                            name={best.fullname}
-                           id={best.page_id}
+                           pageId={best.page_id}
                            image={profile}
                            category="طنز"
                            location="تهران"
                            followers={best.follower_count}
                            price={"23,000"}
                            interaction="12"
+                           paymentId={best.id}
                         />
                      )
                )
