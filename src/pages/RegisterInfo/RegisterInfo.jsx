@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "./RegisterInfo.css";
+import axiosInstance from "../../libs/axios";
+import DialogComponent from "../../components/DialogComponent/DialogComponent";
 
 const RegisterInfo = () => {
    const [userName, setUserName] = useState("");
@@ -7,9 +9,45 @@ const RegisterInfo = () => {
    const [password, setPassword] = useState("");
    const [pageId, setPageId] = useState("");
    const [followers, setFollowers] = useState("");
+   const [showDialog, setShowDialog] = useState(false);
+   const [dialogText, setDialogText] = useState("");
 
    const formHandler = (e) => {
       e.preventDefault();
+
+      if (userName && number && password && pageId && followers) {
+         let newInflu = {
+            fullname: userName,
+            phone_number: number,
+            page_id: pageId,
+            follower_count: followers,
+            password: password,
+         };
+
+         axiosInstance
+            .post("accounts/register/influ/", JSON.stringify(newInflu))
+            .then((res) => {
+               if (res.status === 201) {
+                  setDialogText("ثبت نام با موفقیت انجام شد");
+                  setShowDialog(true);
+               }
+            })
+            .catch((err) => {
+               setDialogText(err.message);
+               setShowDialog(true);
+               console.log(err);
+            });
+      }
+   };
+
+   const closeDialog = () => {
+      setUserName("");
+      setNumber("");
+      setPassword("");
+      setPageId("");
+      setFollowers("");
+      setDialogText("");
+      setShowDialog(false);
    };
 
    return (
@@ -38,6 +76,10 @@ const RegisterInfo = () => {
             </div>
             <button className="register-btn">ثبت نام</button>
          </form>
+
+         <DialogComponent open={showDialog} handleClose={closeDialog}>
+            {dialogText}
+         </DialogComponent>
       </div>
    );
 };
