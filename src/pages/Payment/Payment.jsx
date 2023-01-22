@@ -1,14 +1,17 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import "./Payment.css";
 
 const Payment = () => {
    const navigate = useNavigate();
+   const { paymentId } = useParams();
 
    const formHandler = (e) => {
       e.preventDefault();
       navigate("/done");
    };
+
+   console.log(paymentId);
 
    return (
       <>

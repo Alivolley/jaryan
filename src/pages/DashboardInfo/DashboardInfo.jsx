@@ -32,6 +32,7 @@ const DashboardInfo = () => {
                   </button>
                </div>
             </Grid>
+
             <Grid item sm={9}>
                <div className="dashboardInfo-left">
                   <Outlet />
