@@ -16,13 +16,14 @@ const DashboardInfo = () => {
       Cookies.remove("refresh");
       navigate(0);
    };
+
    return (
       <div className="dashboardInfo">
          <Grid container columnSpacing={5}>
             <Grid item sm={3}>
                <div className="dashboardInfo-right">
                   <NavLink to="myAds" className="dashboardInfo-right__link">
-                     تبلیغ های من
+                     سفارش های من
                   </NavLink>
                   <NavLink to="contact" className="dashboardInfo-right__link">
                      تماس با ما

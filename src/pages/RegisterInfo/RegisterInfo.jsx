@@ -43,22 +43,15 @@ const RegisterInfo = () => {
                }
             })
             .catch((err) => {
-               setDialogText(err.message);
+               err.response.data.fullname[0] === "user influ extend with this fullname already exists." && setDialogText("شخصی با این نام کاربری موجود میباشد");
                setShowDialog(true);
-               console.log(err);
             });
       }
    };
 
    const closeDialog = () => {
-      setUserName("");
-      setNumber("");
-      setPassword("");
-      setPageId("");
-      setFollowers("");
-      setDialogText("");
       setShowDialog(false);
-      navigate(0);
+      dialogText === "ثبت نام با موفقیت انجام شد" && navigate(0);
    };
 
    return (

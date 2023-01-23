@@ -21,7 +21,7 @@ const routes = [
    { path: "/login", element: <Login /> },
    { path: "/contactUs", element: <ContactUs /> },
    { path: "/payment/:paymentId", element: <Payment /> },
-   { path: "/done", element: <DonePayment /> },
+   { path: "/done/:paymentId", element: <DonePayment /> },
    {
       path: "/dashboard",
       element: <DashboardInfo />,

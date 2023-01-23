@@ -30,26 +30,23 @@ const Login = () => {
             .post("accounts/login/", JSON.stringify(user))
             .then((res) => {
                if (res.status === 201) {
-                  setDialogText("ثبت نام با موفقیت انجام شد");
+                  setDialogText("ورود با موفقیت انجام شد");
                   setShowDialog(true);
                   Cookies.set("refresh", res.data.token.refresh, { expires: 1 });
                   Cookies.set("access", res.data.token.access_token, { expires: 1 });
                }
             })
             .catch((err) => {
-               setDialogText(err.message);
+               console.log(err.response.data);
+               err.response.data.non_field_errors[0] === "invalid data" && setDialogText("کاربری با این اطلاعات یافت نشد");
                setShowDialog(true);
-               console.log(err);
             });
       }
    };
 
    const closeDialog = () => {
-      setUserName("");
-      setPassword("");
-      setDialogText("");
       setShowDialog(false);
-      navigate(0);
+      dialogText === "ورود با موفقیت انجام شد" && navigate(0);
    };
 
    return (

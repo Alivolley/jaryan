@@ -1,5 +1,7 @@
+import Cookies from "js-cookie";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import DialogComponent from "../../components/DialogComponent/DialogComponent";
 import Loader from "../../components/Loader/Loader";
 import axiosInstance from "../../libs/axios";
 import toFarsiNumber from "../../utils/toFarsi";
@@ -9,6 +11,7 @@ const Payment = () => {
    const [paymentInfo, setPaymentInfo] = useState();
    const [paymentBuy, setPaymentBuy] = useState();
    const [isLoading, setIsLoading] = useState(true);
+   const [showDialog, setShowDialog] = useState(false);
 
    const navigate = useNavigate();
    const { paymentId } = useParams();
@@ -36,7 +39,16 @@ const Payment = () => {
 
    const formHandler = (e) => {
       e.preventDefault();
-      navigate("/done");
+
+      if (Cookies.get("access")) {
+         navigate(`/done/${paymentId}/`);
+      } else {
+         setShowDialog(true);
+      }
+   };
+
+   const closeDialog = () => {
+      setShowDialog(false);
    };
 
    return (
@@ -62,6 +74,10 @@ const Payment = () => {
 
                   <button className="payment-btn">پرداخت</button>
                </form>
+
+               <DialogComponent open={showDialog} handleClose={closeDialog}>
+                  برای پرداخت ابتدا باید وارد حساب کاربری خود شوید
+               </DialogComponent>
             </div>
          )}
       </>

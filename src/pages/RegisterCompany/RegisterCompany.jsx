@@ -47,12 +47,8 @@ const RegisterCompany = () => {
    };
 
    const closeDialog = () => {
-      setUserName("");
-      setNumber("");
-      setPassword("");
-      setDialogText("");
       setShowDialog(false);
-      navigate(0);
+      dialogText === "ثبت نام با موفقیت انجام شد" && navigate(0);
    };
 
    return (
