@@ -1,7 +1,8 @@
 import React from "react";
+import toFarsiNumber from "../../utils/toFarsi";
 import "./MyAdsItem.css";
 
-const MyAdsItem = ({ order, subject, platform, id }) => {
+const MyAdsItem = ({ order, subject, influName, phoneNumber }) => {
    return (
       <div className="myAds-card">
          <div className="myAds-card__item">
@@ -13,12 +14,12 @@ const MyAdsItem = ({ order, subject, platform, id }) => {
             <p className="myAds-card__answer">{subject}</p>
          </div>
          <div className="myAds-card__item">
-            <p className="myAds-card__lable">پلتفرم درخواستی برای تبلیغات :</p>
-            <p className="myAds-card__answer">{platform}</p>
+            <p className="myAds-card__lable">نام انفلوئنسر :</p>
+            <p className="myAds-card__answer">{influName}</p>
          </div>
          <div className="myAds-card__item">
-            <p className="myAds-card__lable">شماره پلن انتخاب شده :</p>
-            <p className="myAds-card__answer">{id}</p>
+            <p className="myAds-card__lable">شماره تماس اینفلوئنسر :</p>
+            <p className="myAds-card__answer">{toFarsiNumber(phoneNumber)}</p>
          </div>
       </div>
    );

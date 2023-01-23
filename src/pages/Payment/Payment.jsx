@@ -9,7 +9,6 @@ import "./Payment.css";
 
 const Payment = () => {
    const [paymentInfo, setPaymentInfo] = useState();
-   const [paymentBuy, setPaymentBuy] = useState();
    const [isLoading, setIsLoading] = useState(true);
    const [showDialog, setShowDialog] = useState(false);
 
@@ -22,16 +21,7 @@ const Payment = () => {
             console.log(res.data);
             if (res.status === 200) {
                setPaymentInfo(res.data);
-
-               axiosInstance(`payment/buy/${paymentId}/`, {})
-                  .then((res) => {
-                     console.log(res.data);
-                     if (res.status === 200) {
-                        setIsLoading(false);
-                        setPaymentBuy(res.data);
-                     }
-                  })
-                  .catch((err) => console.log(err));
+               setIsLoading(false);
             }
          })
          .catch((err) => console.log(err));
@@ -69,7 +59,15 @@ const Payment = () => {
                   </div>
                   <div className="payment-item">
                      <p className="payment-item__lable">قیمت :</p>
-                     <p className="payment-item__desc">{paymentBuy.price.toLocaleString("fa-IR")}</p>
+                     <p className="payment-item__desc">{paymentInfo.price.toLocaleString("fa-IR")}</p>
+                  </div>
+                  <div className="payment-item">
+                     <p className="payment-item__lable">دسته بندی :</p>
+                     <p className="payment-item__desc">{paymentInfo.category}</p>
+                  </div>
+                  <div className="payment-item">
+                     <p className="payment-item__lable">آیدی پیج :</p>
+                     <p className="payment-item__desc">{paymentInfo.page_id}</p>
                   </div>
 
                   <button className="payment-btn">پرداخت</button>

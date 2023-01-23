@@ -4,7 +4,6 @@ import "./Home.css";
 import social1 from "./../../assets/images/social1.png";
 import { Link } from "react-router-dom";
 import InfoCard from "../../components/InfoCard/InfoCard";
-import profile from "./../../assets/images/profile.png";
 import axiosInstance from "../../libs/axios";
 import Loader from "../../components/Loader/Loader";
 
@@ -52,11 +51,11 @@ const Home = () => {
                            key={best.id}
                            name={best.fullname}
                            pageId={best.page_id}
-                           image={profile}
-                           category="طنز"
+                           image={`https://alirezafa.pythonanywhere.com${best.image}`}
+                           category={best.category}
                            location="تهران"
                            followers={best.follower_count}
-                           price={"23,000"}
+                           price={best.price.toLocaleString("fa-IR")}
                            interaction="12"
                            paymentId={best.id}
                         />

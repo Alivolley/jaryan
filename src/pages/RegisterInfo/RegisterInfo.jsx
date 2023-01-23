@@ -11,6 +11,9 @@ const RegisterInfo = () => {
    const [password, setPassword] = useState("");
    const [pageId, setPageId] = useState("");
    const [followers, setFollowers] = useState("");
+   const [category, setCategory] = useState("");
+   const [price, setPrice] = useState("");
+   const [avatar, setAvatar] = useState("");
    const [showDialog, setShowDialog] = useState(false);
    const [dialogText, setDialogText] = useState("");
 
@@ -23,17 +26,24 @@ const RegisterInfo = () => {
    const formHandler = (e) => {
       e.preventDefault();
 
-      if (userName && number && password && pageId && followers) {
-         let newInflu = {
-            fullname: userName,
-            phone_number: number,
-            page_id: pageId,
-            follower_count: followers,
-            password: password,
-         };
+      if (userName && number && password && pageId && followers && category && price && avatar) {
+         let formData = new FormData();
+
+         formData.append("fullname", userName);
+         formData.append("phone_number", number);
+         formData.append("page_id", pageId);
+         formData.append("follower_count", followers);
+         formData.append("password", password);
+         formData.append("category", category);
+         formData.append("price", price);
+         formData.append("image", avatar);
 
          axiosInstance
-            .post("accounts/register/influ/", JSON.stringify(newInflu))
+            .post("accounts/register/influ/", formData, {
+               headers: {
+                  "Content-Type": "multipart/form-data",
+               },
+            })
             .then((res) => {
                if (res.status === 201) {
                   setDialogText("ثبت نام با موفقیت انجام شد");
@@ -55,7 +65,7 @@ const RegisterInfo = () => {
    };
 
    return (
-      <div className="register">
+      <div className="register" style={{ marginTop: "3rem" }}>
          <h3 className="register-title">ثبت نام به عنوان اینفلوئنسر</h3>
          <form className="register_form" onSubmit={formHandler}>
             <div className="register-input__wrapper">
@@ -77,6 +87,18 @@ const RegisterInfo = () => {
             <div className="register-input__wrapper">
                <label className="register-input__lable">تعداد فالوور : </label>
                <input type="text" className="register-input" value={followers} onChange={(e) => setFollowers(e.target.value)} />
+            </div>
+            <div className="register-input__wrapper">
+               <label className="register-input__lable">دسته بندی :</label>
+               <input type="text" className="register-input" value={category} onChange={(e) => setCategory(e.target.value)} />
+            </div>
+            <div className="register-input__wrapper">
+               <label className="register-input__lable">قیمت درخواستی :</label>
+               <input type="text" className="register-input" value={price} onChange={(e) => setPrice(e.target.value)} />
+            </div>
+            <div className="register-input__wrapper">
+               <label className="register-input__lable">انتخاب عکس پروفایل :</label>
+               <input type="file" className="register-input" accept="image/*" onChange={(e) => setAvatar(e.target.files[0])} />
             </div>
             <button className="register-btn">ثبت نام</button>
          </form>

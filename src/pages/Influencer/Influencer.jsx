@@ -33,13 +33,13 @@ const Influencer = () => {
                      key={best.id}
                      name={best.fullname}
                      pageId={best.page_id}
-                     image={profile}
-                     category="طنز"
                      location="تهران"
                      followers={best.follower_count}
-                     price={"23,000"}
                      interaction="12"
                      paymentId={best.id}
+                     image={`https://alirezafa.pythonanywhere.com${best.image}`}
+                     category={best.category}
+                     price={best.price.toLocaleString("fa-IR")}
                   />
                ))
             )}
